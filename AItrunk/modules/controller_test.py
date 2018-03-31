@@ -22,6 +22,7 @@ while True:
        GPIO.output(18, False)
        GPIO.output(22, False)
        GPIO.output(23, False)
+       GPIO.cleanup()
        break
 
 # Forward
