@@ -7,8 +7,11 @@ class Camera(object):
     def __init__(self):
         print("success create a Camera object")
 
+    def test(self):    
+        os.system("fswebcam -r 640x360 -s 10 -d /dev/video0 webcam.jpg")
+
     def face_detection(self):
-        os.system("fswebcam -r 640x360 -S 10 -d /dev/video0 webcam.jpg")
+        os.system("fswebcam -r 640x360 -s 10 -d /dev/video0 webcam.jpg")
 
         #load image
         f = open('webcam.jpg','rb') 
