@@ -14,6 +14,6 @@ if __name__ == '__main__':
 	print("The confidence : " + str(c))
 	controller = Controller()
 
-	D1 = DD()	#Front DD , obstacle detection
+	D1 = DD(27)	#Front DD , obstacle detection
 	D1_status = D1.status
-	D2 = DD()	##Back DD , person detection
+	D2 = DD(4)	##Back DD , person detection
