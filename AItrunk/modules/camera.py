@@ -5,6 +5,7 @@ import requests
 import pygame, sys
 from pygame.locals import *
 import pygame.camera
+import base64
 
 class Camera(object):
     def __init__(self):
@@ -13,7 +14,7 @@ class Camera(object):
 
     def test(self):
         width = 640
-        height = 480
+        height = 360
 
         #initialise pygame   
         pygame.init()
@@ -43,8 +44,12 @@ class Camera(object):
         """
         The part below is for API request
         """
-        body = image
-        headers_detection= {
+        body = pygame.image.tostring(image, "RGB", False)
+	#body = base64.b64encode(body)	        
+        f = open('picture.jpg','rb') 
+        body = f.read() 
+
+	headers_detection= {
             # Request headers
             'Content-type': 'application/octet-stream',
             'Ocp-Apim-Subscription-Key': '07ecc20b5e0f4c01b3b62196a116fee6',
@@ -70,7 +75,6 @@ class Camera(object):
             #find
             headers_find = {
                 # Request headers
-                'Content-Type': 'application/json',
                 'Ocp-Apim-Subscription-Key': '07ecc20b5e0f4c01b3b62196a116fee6',
             }
             json = {
@@ -117,7 +121,7 @@ class Camera(object):
 
         if len(response_detection.json()) == 0:
             return -1
-        elif:
+        else:
             detection_faceId = response_detection.json()[0]['faceId']
             top = response_detection.json()[0]['faceRectangle']['top']
             left = response_detection.json()[0]['faceRectangle']['left']
