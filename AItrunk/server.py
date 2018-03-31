@@ -5,6 +5,7 @@ from modules.DD import DD
 import time
 from multiprocessing import Process
 import os
+import sys
 def request_img():
     camera = Camera()
     controller = Controller()
@@ -28,6 +29,7 @@ def detect_distance():
 
 
 if __name__ == '__main__':
+    data = sys.stdin.readlines()
     p = Pool()
     p.apply_async(request_img)
     p.apply_async(detect_distance)
