@@ -4,10 +4,10 @@ import os
 import requests
 
 class Camera(object):
-    def __init__(self, sub_key):
+    def __init__(self):
         print("success create a Camera object")
 
-    def face_detection():
+    def face_detection(self):
         os.system("fswebcam -r 640x360 -S 10 -d /dev/video0 webcam.jpg")
 
         #load image
