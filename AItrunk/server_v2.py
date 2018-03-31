@@ -14,7 +14,7 @@ def request_img():
     D2 = DD(4)
     print("request_img")
     while(1):
-        if(camera.face_detection() > 0.2 and D2==False and D1==True):
+        if(camera.test() > 0.2 and D2==False and D1==True):
             controller.Forward()
 
 def detect_distance():
@@ -41,4 +41,9 @@ def main():
 	p.join()
 
 if __name__ == '__main__':
-    main()
+    m1 = Process(target=request_img,args=())
+    m2 = Process(target=detect_distance,args=())
+    m1.start()
+    m2.start()
+    m1.join()
+    m2.join()

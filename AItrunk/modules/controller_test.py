@@ -42,13 +42,13 @@ while True:
 # Turn Right
     if ch == 'd':
        GPIO.output(17, False)
-       GPIO.output(18, True)
+       GPIO.output(18, False)
        GPIO.output(22, False)
-       GPIO.output(23, False)
+       GPIO.output(23, True)
 
 # Turn Left
     if ch == 'a':
        GPIO.output(17, False)
-       GPIO.output(18, False)
+       GPIO.output(18, True)
        GPIO.output(22, False)
-       GPIO.output(23, True)
+       GPIO.output(23, False)

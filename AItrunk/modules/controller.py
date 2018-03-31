@@ -1,5 +1,5 @@
 # motor and servo 
-from RPi import GPIO as gpio
+from RPi import GPIO as GPIO
 import time
 
 class Controller(object):
@@ -24,13 +24,13 @@ class Controller(object):
     GPIO.output(22, True)
     GPIO.output(23, False)
 
-  def Right(self):
+  def Left(self):
     GPIO.output(17, False)
     GPIO.output(18, True)
     GPIO.output(22, False)
     GPIO.output(23, False)
 
-  def Left(self):
+  def Right(self):
     GPIO.output(17, False)
     GPIO.output(18, False)
     GPIO.output(22, False)
