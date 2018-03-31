@@ -36,6 +36,12 @@ class Controller(object):
     GPIO.output(22, False)
     GPIO.output(23, True)
 
+  def Stop(self):
+    GPIO.output(17, False)
+    GPIO.output(18, False)
+    GPIO.output(22, False)
+    GPIO.output(23, False)
+
   def Quit(self):
     GPIO.output(17, False)
     GPIO.output(18, False)
