@@ -21,14 +21,17 @@ if __name__ == '__main__':
 	while(True):
 		if(D1.status == False):
 			# Obstacle has been detected
-			None
+			# stop
+			controller.Stop()
 		elif(camera.test() < 0.2):
 			# Front got no obstacle but do not dectect the face
-			None
+			# stop
+			controller.Stop()
 		elif(D2.status == True):
 			# Front got no obstacle and do detect the face but the person is out of the range
-			None
+			# stop
+			controller.Stop()
 		else:
 			# Fron got no obstacle and do detect the face and the person is in the range
-			None
+			controller.Forward()
 
