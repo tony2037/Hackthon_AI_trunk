@@ -37,7 +37,7 @@ class Camera(object):
 
         if len(response_detection.json()) == 0:
             return -1
-        elif:
+        else:
             detection_faceId = response_detection.json()[0]['faceId']
             top = response_detection.json()[0]['faceRectangle']['top']
             left = response_detection.json()[0]['faceRectangle']['left']
