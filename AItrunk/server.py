@@ -9,4 +9,5 @@ import time
 
 if __name__ == '__main__':
 	camera = Camera()
-	camera.test()
+	c = camera.test()
+	print(c)
