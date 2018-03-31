@@ -23,3 +23,6 @@ class Controller(object):
 
   def stop(self):
     gpio.output(self.motor, 1)
+
+  def cleanup(self):
+    gpio.cleanup()
