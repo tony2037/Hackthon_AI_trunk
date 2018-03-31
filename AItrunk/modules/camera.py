@@ -58,9 +58,9 @@ class Camera(object):
 
         response_detection = requests.post(self.face_api_url, params=params_detection, headers=headers_detection, data = body)
 
-        if len(response_detection.json()) == 0:
+        if (len(response_detection.json()) == 0):
             return -1
-        elif:
+        else:
             detection_faceId = response_detection.json()[0]['faceId']
             top = response_detection.json()[0]['faceRectangle']['top']
             left = response_detection.json()[0]['faceRectangle']['left']
