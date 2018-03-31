@@ -10,28 +10,25 @@ import time
 
 if __name__ == '__main__':
 	camera = Camera()
-	c = camera.test()
-	print("The confidence : " + str(c))
 	controller = Controller()
-
 	D1 = DD(27)	#Front DD , obstacle detection
-	D1_status = D1.status
 	D2 = DD(4)	##Back DD , person detection
-
 	while(True):
-		if(D1.status == False):
-			# Obstacle has been detected
-			# stop
-			controller.Stop()
-		elif(camera.test() < 0.2):
-			# Front got no obstacle but do not dectect the face
-			# stop
-			controller.Stop()
-		elif(D2.status == True):
-			# Front got no obstacle and do detect the face but the person is out of the range
-			# stop
-			controller.Stop()
-		else:
-			# Fron got no obstacle and do detect the face and the person is in the range
-			controller.Forward()
+            c = camera.test()
+            print("The confidence : " + str(c))
+            if(D1.status() == False):
+                    # Obstacle has been detected
+                    # stop
+                    controller.Stop()
+            elif(c < 0.2 and D1.status() == True):
+                    # Front got no obstacle but do not dectect the face
+                    # stop
+                    controller.Stop()
+            elif(c > 0.2 and D2.status() == True):
+                    # Front got no obstacle and do detect the face but the person is out of the range
+                    # stop
+                    controller.Stop()
+            else:
+                    # Fron got no obstacle and do detect the face and the person is in the range
+                    controller.Forward()
 
