@@ -3,26 +3,42 @@ from RPi import GPIO as gpio
 import time
 
 class Controller(object):
-  def __init__(self, motor_pin, servo_pin):
-    if gpio.getmode() != gpio.BCM:
-      gpio.setmode(gpio.BCM)
-      print("GPIO mode : BCM")
-    self.motor = motor_pin
-    gpio.setup(self.motor, gpio.OUT)
-    gpio.setup(servo_pin, gpio.OUT)
-    self.servo = gpio.PWM(servo_pin, 50)
+  def __init__(self):
+    GPIO.setmode(GPIO.BCM)
 
-    # Please replace these values below with tuned ones
-    self.middle_val = 8.3
-    self.left_val = self.middle_val - 1.8
-    self.right_val = self.middle_val + 1.8
+    GPIO.setup(17, GPIO.OUT)
+    GPIO.setup(18, GPIO.OUT)
+    GPIO.setup(22, GPIO.OUT)
+    GPIO.setup(23, GPIO.OUT)
+    print("Controller has been constructed")
 
-  def forward(self):
-    gpio.output(self.motor, 0)
-    self.servo.start(self.middle_val)
+  def Forward(self):
+    GPIO.output(17, False)
+    GPIO.output(18, True)
+    GPIO.output(22, False)
+    GPIO.output(23, True)
 
-  def stop(self):
-    gpio.output(self.motor, 1)
+  def Backward(self):
+    GPIO.output(17, True)
+    GPIO.output(18, False)
+    GPIO.output(22, True)
+    GPIO.output(23, False)
 
-  def cleanup(self):
-    gpio.cleanup()
+  def Right(self):
+    GPIO.output(17, False)
+    GPIO.output(18, True)
+    GPIO.output(22, False)
+    GPIO.output(23, False)
+
+  def Left(self):
+    GPIO.output(17, False)
+    GPIO.output(18, False)
+    GPIO.output(22, False)
+    GPIO.output(23, True)
+
+  def Quit(self):
+    GPIO.output(17, False)
+    GPIO.output(18, False)
+    GPIO.output(22, False)
+    GPIO.output(23, False)
+    GPIO.cleanup()
