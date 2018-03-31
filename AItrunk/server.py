@@ -4,6 +4,7 @@ from modules.controller import Controller
 from modules.DD import DD
 import time
 from multiprocessing import Process
+from multiprocessing import Pool
 import os
 import sys
 def request_img():
